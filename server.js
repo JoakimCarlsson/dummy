@@ -13,8 +13,8 @@ export function createApp() {
       res.end(JSON.stringify({ status: "ok" }));
       return;
     }
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.end("not found");
+    res.writeHead(404, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "not found", path: req.url }));
   });
 }
 
