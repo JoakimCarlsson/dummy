@@ -23,6 +23,8 @@ test("GET / returns hello", async () => {
 test("unknown path returns 404", async () => {
   const res = await request("/nope");
   assert.equal(res.status, 404);
+  assert.equal(res.type, "application/json");
+  assert.deepEqual(JSON.parse(res.body), { error: "not found", path: "/nope" });
 });
 
 test("GET /health returns ok JSON", async () => {
